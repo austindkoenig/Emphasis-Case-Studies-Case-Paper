@@ -27,18 +27,32 @@ While Wall and Aggrawal worked within their means, they only picked data that re
 - External company performance
 - Internal company performance
 
-Each of these categories encapsulates a feature subspace within the space of possible model features. However, since much of the data within these subspaces are probably not publicly available, we can employ submodels to approximate these desired features for companies based on publicly available data. By including the features within the subspaces in the study, we can create a company profile encoding with which to describe each of the QWE customers. Then, we can use this encoding as a set of features in the model which predicts churn.
+Each of these categories encapsulates a feature subspace within the space of possible features. However, since much of the data within these subspaces are probably not publicly available, we can employ submodels to approximate these prohibited features for companies based on publicly available data. By including the features in the study, we can create a company profile encoding with which to describe each of the QWE customers. Then, we can use this encoding as a set of features in the model which predicts churn.
 
 Let's go deeper into these subspaces and define some of the features we can use to describe a company as well as some potential sources of or ways to generate these data:
 
 | Category | Desired Feature | Potential Data Source |
 | --- | --- | --- |
-| Character/Behavior | Public Opinion<br>Peer/Management Reviews<br>Philanthropic Relations<br>Legal Behavior<br>Customer Reviews | NLP Sentiment Analysis of Top News Sources<br>NLP Sentiment Analysis of Employee Reviews<br>Sample Survey<br>HR Database Query<br>NLP Sentiment Analysis of Customer Reviews |
-| External Performance | Periodic Reported Metrics<br>Customer Reviews<br>Dollar Value of Public Associations | Quarterly/Yearly Reports Query<br>NLP Sentiment Analysis of Customer Reviews<br>Financial Analysis of Public Partnerships |
-| Internal Performance | Peer/Management Reviews<br>Measure of Efficiency<br>Hire/Fire/Quit Rates | NLP Sentiment Analysis of Employee Reviews<br>Operations Reports per Time Period<br>HR Database Query |
+| Character/Behavior | Public Opinion*<br>Peer/Management Reviews*<br>Philanthropic Relations<br>Legal Behavior*<br>Customer Reviews* | NLP Sentiment Analysis of Top News Sources<br>NLP Sentiment Analysis of Employee Reviews<br>Finance Database Query<br>HR Database Query<br>NLP Sentiment Analysis of Customer Reviews |
+| External Performance | Periodic Reported Metrics<br>Customer Reviews*<br>Dollar Value of Public Associations | Quarterly/Yearly Reports Query<br>NLP Sentiment Analysis of Customer Reviews<br>Finance Database Query |
+| Internal Performance | Peer/Management Reviews*<br>Measure of Efficiency<br>Hire/Fire/Quit Rates | NLP Sentiment Analysis of Employee Reviews<br>Operations Reports per Time Period<br>HR Database Query |
 
-### Proposed Customer Profile Encoding
+An asterisk (*) indicates that the feature may be a derived feature, meaning that there is some nondeterministic process required to produce it.
 
-Let's now begin to build a model of the cumulative customer company profile.
+### Proposed Feature List
 
+This section proposes the full feature list for this project.
 
+- Given Features:
+  - ID
+  - Customer Age
+  - Customer Happiness Index (CHI)
+  - Number of Support Cases
+  - Average Support Case Priority
+  - Number of Logins
+  - Number of Blog Articles Written
+  - Number of Views
+  - Number of Days Since Last Login
+- Comprehensive Customer Profile:
+  - Customer Character/Behavior Index (CCBI)
+  - 

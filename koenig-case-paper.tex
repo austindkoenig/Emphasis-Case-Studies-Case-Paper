@@ -21,7 +21,7 @@
 	\maketitle
 	\section{Background}
 	
-	QWE Inc. offers a subscription service to small and medium-sized companies to manage their online branding either on a month-by-month or 6-/12-month basis. Richard Wall, VP of Customer Services at QWE, asked V.J. Aggrawal to take on a project that utilizes available data in order to change the way in which QWE handles customer churn. Wall’s hope was to move from their previous reactive approach towards a more proactive one.
+	QWE Inc. offers a subscription service to small and medium-sized companies to manage their online branding either on a month-by-month or 6-/12-month basis. Richard Wall, VP of Customer Services at QWE, asked V.J. Aggrawal to take on a project that utilizes available data in order to change the way in which QWE handles customer churn. Wall's hope was to move from their previous reactive approach towards a more proactive one.
 	
 	The old process of handling churn started when the customer called to cancel their subscription, at which point the customer service representative would go on enticing them to prolong their contract using incentives like free services or discounts on existing ones. This paper is not considering the ineffectiveness of this tactic; but, with the ever-rising prominence of data-driven technologies, this case offers a great opportunity for QWE to add another data-oriented process to their repertoire. This opportunity to get in front of customer churn is best described by a quote from the original case document:
 	
@@ -31,11 +31,11 @@
 	
 	The ability to estimate the probability of churn would enable QWE to positively interact with customers who have not yet decided to unsubscribe but might decide to do so in the future. If QWE continues to pursue a reactive style as their approach to churn, customers will certainly exploit the process in order to get a better deal on their contract even if they’re not seriously considering termination.
 	
-	Aggrawal (with Wall’s advice) came up with a list of potential features (customer age, customer happiness index, and service and usage patterns) that served as first steps in converting the churn handling process into a data-driven process. These features will be described in more detail later in the paper.
+	Aggrawal (with Wall's advice) came up with a list of potential features (customer age, customer happiness index, and service and usage patterns) that served as first steps in converting the churn handling process into a data-driven process. These features will be described in more detail later in the paper.
 	
 	\subsection{QWE's Goal}
 	
-	The above quotation also sums up Wall’s goal for the project. Specifically, QWE wishes to use available data to approximate the probability of customer churn so they can decide which customers should be contacted or offered which incentives to stay on their contract.
+	The above quotation also sums up Wall's goal for the project. Specifically, QWE wishes to use available data to approximate the probability of customer churn so they can decide which customers should be contacted or offered which incentives to stay on their contract.
 	
 	First, churn is formally defined; then, proposed are three feature sets to use in a classification model; next, some descriptions are presented to act as the classifier; later, considered is the model within a grand deployment by QWE; finally, expected outcomes and solutions are examined.
 	
@@ -64,7 +64,7 @@
 		\item[Customer Profile Features] Features specific to each customer, not necessarily related to the QWE service
 	\end{description}
 
-	Features were split up into sets because they are related to a few different aspects of the customer. Thus, if a feature in one set is more or less effective in a model, then the other features in that set may be more likely to follow suit. This is not verified and is entirely speculative, but it was used because of the fortunate byproduct that it vastly simplifies the process of selecting a model. 
+	Features were split up into sets because they are related to a few different aspects of the customer-to-QWE relationship. Thus, if a feature in one set is more or less effective in a model, then the other features in that set may be more likely to follow suit. This is not verified and is entirely speculative, but it was used because of the fortunate byproduct that it vastly simplifies the process of selecting a model. 
 	
 	One common method for selection is to test models with all possible combinations of features. This is very slow ($m {n \choose k}$ training iterations, where $m$ is the number of model hierarchies to test, $n$ is the number of features, and $k$ is the number of features per model), so it would be a computational hindrance to train on all possible feature combinations. Therefore, if $N$ is the number of feature sets to test, we reduce the number of training iterations to $m {N \choose k}$, since $N\leq n$. The way these feature sets are defined ensures that $N<n$.
 	
@@ -140,13 +140,13 @@
 		\item[Frequency of New Job Postings] The number of new job postings per unit time
 	\end{description}
 
-	This feature set is meant to reflect the nature of the customers themselves as opposed to their activity on the QWE service. It isn't inconceivable that the character of a customer has an influence on their churn. Reviews certainly say something of the public image of the company. This is important because in most cases, public image is directly influenced by the company itself. The frequency of news mentions is also meant to affect churn in this capacity. Finally, the frequency of new job postings is meant to be an indicator of company growth.
+	This feature set is meant to reflect the nature of the customers themselves as opposed to their activity on the QWE service. It isn't inconceivable that the character of a customer has an influence on their churn. Reviews certainly say something of the public image of the company, which is important because in most cases public image is directly influenced by the company itself. Similarly, the frequency of news mentions affects churn in the same way. Finally, the frequency of new job postings is an indicator of company growth since companies will often have more diverse job postings as they decide to expand.
 
 	\subsection{Final Notes on Features}
 	
 	The baseline features were accepted because of their suggestion by an industry expert. The customer analytics features expand upon the baseline features while keeping under consideration that the way customers interact with the QWE services affect their decision to churn. Lastly, the customer profile features step away from QWE and look for potential churn patterns in customers based on their corporate profile: it is reasonable to suppose that the qualitative success of customers (companies) is a reliable predictor of churn.
 	
-	Even with this small handful of features, this project uses the selection method briefly described above: an exhaustive search tactic may be employed to determine which feature sets articulate the best results. However, treating entire sets of features as individuals in the selection process is naive, to say the least. To combat this naivety, principal component analysis (PCA) may be used to extract the most varied features in feature sets while maintaining the ability to filter a fair amount of noise. Upon doing this, meaning in particular features is lost, but general inferences may be extracted from themes of the broader feature sets. Other solutions to the multicollinearity problem include filter, wrapper, and embedded methods. 
+	Even with this small handful of features, this project uses the selection method briefly described above: an exhaustive search tactic may be employed to determine which feature sets articulate the best results. However, treating entire sets of features as individuals in the selection process is naive, to say the least. To combat this naivety, principal component analysis (PCA) may be used to extract the most varied features in feature sets while maintaining the ability to filter a fair amount of noise. Upon doing this, meaning in particular features is lost, but general inferences may be extracted from themes of the broader feature sets. Other solutions to the multicollinearity problem include filter, wrapper, and embedded methods; but, using PCA is a good start since more adjustments can be made to the algorithm as results reveal progress. 
 	
 	In any case, these techniques should be experimented with to determine which method derives the best outcomes. Next, the actual model should be briefly considered.
 		
